@@ -20,14 +20,14 @@ Add on has more features are done.
 
 - Main game:
 
-- Lets user bid on items in the auction
-- User can choose out of 3 items.
-- Only highest bid shows.
-- Bid more or leave (return login_menu)
-- Items have a asking price.
-- AI bidding. (random bid on % of price)
-- User gets starting money
-- User can sell items and set asking price.
+  - Lets user bid on items in the auction
+  - User can choose out of 3 items.
+  - Only highest bid shows.
+  - Bid more or leave (return login_menu)
+  - Items have a asking price.
+  - AI bidding. (random bid on % of price)
+  - User gets starting money
+  - User can sell items and set asking price.
 
 #
 
