@@ -26,7 +26,7 @@ Add on has more features are done.
       - See users.
         - Get user details.
         - Change user data.
-        - Delete user
+        - Delete user.
       - See auction items.
         - Add items.
         - Delete items.
