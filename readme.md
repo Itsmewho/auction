@@ -29,6 +29,7 @@ Add on has more features are done.
         - Delete user.
       - See auction items.
         - Add items.
+        - Change items.
         - Delete items.
       - Logout.
       - Exit.
