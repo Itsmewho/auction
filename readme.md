@@ -27,7 +27,7 @@ Add on has more features are done.
   - Auction time = 1, 2 or 3min?
   - Bid more or leave (return login_menu)\
   - Check if user has enough funds
-  - Items have a starting price
+  - Items have a starting price(random % of asking price)
   - Items have a asking price(hidden).
   - AI bidding. (random bid on % of asking price)
   - User gets starting money
