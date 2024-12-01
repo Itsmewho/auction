@@ -23,13 +23,10 @@ Add on has more features are done.
   - Only needs to input name for login.
 
     - Admin menu:
-
       - See users.
-
         - Get user details.
         - Change user data.
         - Delete user
-
       - See auction items.
         - Add items.
         - Delete items.
