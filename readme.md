@@ -2,7 +2,7 @@ Add on has more features are done.
 
 #
 
-# Auction House -- my own version of the course: 100days of python (back to the basics)
+# Auction House -- my version of the course: 100days of python (back to the basics)
 
 #
 
