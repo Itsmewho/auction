@@ -12,6 +12,7 @@ Add on has more features are done.
   - Go to auction.
   - See inventory
   - Sell items
+  - Account details
   - Logout
   - Exit
   - Delete account.
