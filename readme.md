@@ -86,3 +86,11 @@ Do an additional 2 or 3 of these kind of projects,..
 
     If comfortable with CRUD-operations.
     Start working with basic API's and data collection.
+
+#
+
+- Don't resort to learning: GUI's
+  - GUI's are not part off the end 'goal', as it seems for now!
+  - Keep the terminal interface.
+
+#
