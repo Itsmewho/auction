@@ -6,13 +6,7 @@ import logging
 from pymongo.errors import PyMongoError
 from pymongo.collection import Collection
 from utils.helpers import green, red, blue, reset
-from config.connect_db import (
-    db,
-    admin_collection,
-    users_collection,
-    auction_collection,
-    inventory_collection,
-)
+from config.connect_db import db
 
 
 logging.basicConfig(

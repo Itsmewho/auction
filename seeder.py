@@ -1,13 +1,7 @@
 # For checking db and basic operrations
 import json
-from pydantic import BaseModel, ValidationError
-from config.connect_db import (
-    admin_collection,
-    users_collection,
-    auction_collection,
-    inventory_collection,
-)
-from models.all_models import UserModel, RegisterModel, InventoryModel, AuctionModel
+from pydantic import ValidationError
+from models.all_models import UserModel, InventoryModel, AuctionModel
 from db.db_operations import create_db
 from utils.helpers import green, red, reset
 

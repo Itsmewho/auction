@@ -13,11 +13,11 @@ class InventoryModel(BaseModel):
 
 
 class RegisterModel(BaseModel):
-    name: str
-    surname: str
+    name: str = Field(..., min_length=3)
+    surname: str = Field(..., min_length=3)
     email: EmailStr
-    secure_password: str
-    repeat_password: str
+    secure_password: str = Field(..., min_length=4)
+    repeat_password: str = Field(..., min_length=4)
 
 
 class UserModel(BaseModel):
