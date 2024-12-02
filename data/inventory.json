@@ -1,5 +1,5 @@
 [
-  { "item": "table", "price": 500 },
-  { "item": "glas", "price": 20 },
-  { "item": "phone", "price": 1100 }
+  { "item": "table", "sellprice": 500 },
+  { "item": "glas", "sellprice": 20 },
+  { "item": "phone", "sellprice": 1100 }
 ]
