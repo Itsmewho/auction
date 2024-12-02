@@ -1,36 +1,24 @@
 # CRUD operations for universial use.
 # Improved by GPT. Will use in the future, if proven usefull.
 
-import os
+
 import logging
-from dotenv import load_dotenv
-from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 from pymongo.collection import Collection
 from utils.helpers import green, red, blue, reset
+from config.connect_db import (
+    db,
+    admin_collection,
+    users_collection,
+    auction_collection,
+    inventory_collection,
+)
 
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
-
-
-load_dotenv()
-
-MONGO_URI = os.getenv("MONGO_URI")
-MONGO_DBNAME = os.getenv("MONGO_DBNAME")
-
-# Collections call here for using elsewhere
-
-MONGO_ADMIN = os.getenv("MONGO_ADMIN")
-MONGO_USERS = os.getenv("MONGO_USERS")
-MONGO_AUCTION = os.getenv("MONGO_AUCTION")
-MONGO_INVENTORY = os.getenv("MONGO_INVENTORY")
-
-
-client = MongoClient(MONGO_URI)
-db = client[MONGO_DBNAME]
 
 
 def create_db(collection_name: str, data: dict):

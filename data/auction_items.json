@@ -1,0 +1,7 @@
+[
+  { "item": "motorcycle", "price": 5000 },
+  { "item": "painting", "price": 800 },
+  { "item": "koffie machine", "price": 350 },
+  { "item": "monet", "price": 150000 },
+  { "item": "car", "price": 25000 }
+]

@@ -3,7 +3,7 @@ from utils.helpers import *
 
 
 def main():
-
+    # Checking functions remove later
     input_masking("password:", color=red)
     input_masking("password:", typing_effect=True)
     input_masking("password:", typing_effect=True, color=blue)
