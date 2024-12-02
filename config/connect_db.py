@@ -8,6 +8,11 @@ load_dotenv()
 MONGO_URI = os.getenv("MONGO_URI")
 MONGO_DBNAME = os.getenv("MONGO_DBNAME")
 
+# Connection
+client = MongoClient(MONGO_URI)
+db = client[MONGO_DBNAME]
+print("Connected to:", db.name)
+
 # Collections.
 MONGO_ADMIN = os.getenv("MONGO_ADMIN", "admin")
 MONGO_USERS = os.getenv("MONGO_USERS", "users")
@@ -24,8 +29,3 @@ admin_collection = get_collection(MONGO_ADMIN)
 users_collection = get_collection(MONGO_USERS)
 auction_collection = get_collection(MONGO_AUCTION)
 inventory_collection = get_collection(MONGO_INVENTORY)
-
-
-# Connection
-client = MongoClient(MONGO_URI)
-db = client[MONGO_DBNAME]

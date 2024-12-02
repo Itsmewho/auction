@@ -26,11 +26,11 @@ def create_db(collection_name: str, data: dict):
     try:
         collection: Collection = db[collection_name]
         collection.insert_one(data)
-        logger.info(green + f"Document inserted into {collection_name}", reset)
+        logger.info(green + f"Document inserted into {collection_name}{reset}")
     except PyMongoError as e:
-        logger.info(red + f"Error insterting document: {e}", reset)
+        logger.info(f"Error insterting document: {e}{reset}")
     except Exception as e:
-        logger.info(red + f"Unexpected error insterting document: {e}", reset)
+        logger.info(red + f"Unexpected error insterting document: {e}{reset}")
 
 
 def read_db(
@@ -53,15 +53,15 @@ def read_db(
 
         result = list(cursor)
         logger.info(
-            green + f"Read {len(result)} documents from {collection_name}", reset
+            green + f"Read {len(result)} documents from {collection_name}{reset}"
         )
         return result
     except PyMongoError as e:
-        logger.error(red + f"Error reading data from {collection_name}: {e}", reset)
+        logger.error(red + f"Error reading data from {collection_name}: {e}{reset}")
         return []
     except Exception as e:
         logger.error(
-            red + f"Unexpected error reading data from {collection_name}: {e}", reset
+            red + f"Unexpected error reading data from {collection_name}: {e}{reset}"
         )
         return []
 
@@ -82,16 +82,16 @@ def update_db(
             result = collection.update_one(query, update_data)
 
         if result.modified_count > 0:
-            logger.info(green + f"Document(s) updated in {collection_name}", reset)
+            logger.info(green + f"Document(s) updated in {collection_name}{reset}")
         else:
             logger.info(
-                blue + f"No documents matched for update in {collection_name}", reset
+                blue + f"No documents matched for update in {collection_name}{reset}"
             )
     except PyMongoError as e:
-        logger.error(red + f"Error updating data in {collection_name}: {e}", reset)
+        logger.error(red + f"Error updating data in {collection_name}: {e}{reset}")
     except Exception as e:
         logger.error(
-            red + f"Unexpected error updating data in {collection_name}: {e}", reset
+            red + f"Unexpected error updating data in {collection_name}: {e}{reset}"
         )
 
 
@@ -106,14 +106,14 @@ def delete_db(collection_name: str, query: dict, multiple: bool = False):
             result = collection.delete_one(query)
 
         if result.deleted_count > 0:
-            logger.info(green + f"Deleted document(s) from {collection_name}", reset)
+            logger.info(green + f"Deleted document(s) from {collection_name}{reset}")
         else:
             logger.info(
-                blue + f"No documents matched for deletion in {collection_name}", reset
+                blue + f"No documents matched for deletion in {collection_name}{reset}"
             )
     except PyMongoError as e:
-        logger.error(red + f"Error deleting document in {collection_name}: {e}", reset)
+        logger.error(red + f"Error deleting document in {collection_name}: {e}{reset}")
     except Exception as e:
         logger.error(
-            red + f"Unexpected error deleting document in {collection_name}: {e}", reset
+            red + f"Unexpected error deleting document in {collection_name}: {e}{reset}"
         )
