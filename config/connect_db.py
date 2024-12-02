@@ -9,10 +9,10 @@ MONGO_URI = os.getenv("MONGO_URI")
 MONGO_DBNAME = os.getenv("MONGO_DBNAME")
 
 # Collections.
-MONGO_ADMIN = os.getenv("MONGO_ADMIN")
-MONGO_USERS = os.getenv("MONGO_USERS")
-MONGO_AUCTION = os.getenv("MONGO_AUCTION")
-MONGO_INVENTORY = os.getenv("MONGO_INVENTORY")
+MONGO_ADMIN = os.getenv("MONGO_ADMIN", "admin")
+MONGO_USERS = os.getenv("MONGO_USERS", "users")
+MONGO_AUCTION = os.getenv("MONGO_AUCTION", "auction_items")
+MONGO_INVENTORY = os.getenv("MONGO_INVENTORY", "inventory")
 
 
 # Checking collections.
