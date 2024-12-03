@@ -2,6 +2,7 @@ from utils.helpers import green, reset, input_quit_handle, clear, handle_quit
 
 
 def menu_admin_login():
+    # Testing
     while True:
         action = input_quit_handle(
             green + f"What do you want to do? \n"
@@ -19,4 +20,5 @@ def menu_admin_login():
             handle_quit()
             break
         elif action == "3":
+            clear()
             return

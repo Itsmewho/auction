@@ -21,4 +21,4 @@ def menu_user_login(logged_user):
             handle_quit()
         elif action == "3":
             clear()
-            break
+            return

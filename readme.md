@@ -63,7 +63,6 @@ LEARNING POITNS :
 - Refine coding style,. . . .... . . .. . . . .......
 - Refine boiler plate?
 - CRUD-operations.
-- Hide DB, MONGO_DBUSERS, MONGO_DBITEMS etc,...
 
 #
 
@@ -84,8 +83,18 @@ Do an additional 2 or 3 of these kind of projects,..
 
 #
 
+Maybe add to next projects boilerplate:
+
+- Register confirmation (10min window)
+- Add data change for user account[role=user]
+- Add reset password via mail/phone?
+- Look into 2 factor authenticatie.
+- Look into last login from {"date": "UTC", "location": "location"}
+
+#
+
     If comfortable with CRUD-operations.
-    Start working with basic API's and data collection.
+    Start working with more with API's and data collection.
 
 #
 

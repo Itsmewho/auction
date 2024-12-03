@@ -7,6 +7,7 @@ from utils.login_menu import menu_user_login
 
 
 def main():
+    # Testing :
     print(blue + "Welcome to the Auction System!" + reset)
 
     while True:
@@ -26,7 +27,7 @@ def main():
             if logged_user is None:
                 continue
 
-            if logged_user["role"] == "admin":
+            if logged_user.get("role") == "admin":
                 clear()
 
                 menu_admin_login()
