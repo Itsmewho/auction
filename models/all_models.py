@@ -17,7 +17,6 @@ class RegisterModel(BaseModel):
     surname: str = Field(..., min_length=3)
     email: EmailStr
     secure_password: str = Field(..., min_length=4)
-    repeat_password: str = Field(..., min_length=4)
 
 
 class UserModel(BaseModel):
@@ -25,3 +24,10 @@ class UserModel(BaseModel):
     surname: str
     email: EmailStr
     secure_password: str
+
+
+class AdminModel(BaseModel):
+    name: str
+    surname: str
+    email: EmailStr
+    role: str

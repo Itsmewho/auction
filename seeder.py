@@ -1,7 +1,7 @@
 # For checking db and basic operrations
 import json
 from pydantic import ValidationError
-from models.all_models import UserModel, InventoryModel, AuctionModel
+from models.all_models import UserModel, InventoryModel, AuctionModel, AdminModel
 from db.db_operations import create_db
 from utils.helpers import green, red, reset
 
@@ -35,6 +35,10 @@ def seed_data(collection_name: str, data: list, model):
 
 
 def seeding():
+
+    # Admin
+    admin_data = load_json("data/admin.json")
+    seed_data("admin", admin_data, AdminModel)
 
     # Users
     user_data = load_json("data/users.json")

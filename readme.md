@@ -63,7 +63,7 @@ LEARNING POITNS :
 - Refine coding style,. . . .... . . .. . . . .......
 - Refine boiler plate?
 - CRUD-operations.
-- Hide DB-collections, MONGO_DBUSERS, MONGO_DBITEMS etc,...
+- Hide DB, MONGO_DBUSERS, MONGO_DBITEMS etc,...
 
 #
 
@@ -90,7 +90,7 @@ Do an additional 2 or 3 of these kind of projects,..
 #
 
 - Don't resort to learning: GUI's
-  - GUI's are not part off the end 'goal', as it seems for now!
+  - GUI's are not part off the 'goal', as it seems for now!
   - Keep the terminal interface.
 
 #

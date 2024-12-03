@@ -37,6 +37,10 @@ def read_db(
         if query is None:
             query = {}
 
+        for key, value in query.items():
+            if isinstance(value, str):
+                query[key] = {"$regex": f"^{value}$", "$options": "i"}
+
         collection: Collection = db[collection_name]
 
         cursor = collection.find(query)
