@@ -16,7 +16,7 @@ Add on has more features are done.
   - Account details.
   - Logout.(done)
   - Exit.(done)
-  - Delete account.
+  - Delete account. (Use same block from admin_menu(done))
 
 - Admin:
 
@@ -25,9 +25,9 @@ Add on has more features are done.
     - Admin menu:
       - See users. (done)
         - Get user details. (done)
-        - Change user data. (done)
-        - Change user inventory(,...)
-        - Delete user. (done)
+          - Change user data. (done)
+          - Delete user. (done)
+          - Change user inventory.
       - See auction items.
         - Add items.
         - Change items.
