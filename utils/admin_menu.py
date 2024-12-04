@@ -16,8 +16,8 @@ def menu_admin_login():
         action = input_quit_handle(
             green + f"What do you want to do? \n"
             "(1) Manage Users\n"
-            "(2) Auction Items\n"
-            "(3) logout\n"
+            "(3) Auction Items\n"
+            "(4) logout\n"
             "Enter your choice admin: "
         ).strip()
 
@@ -67,43 +67,46 @@ def manage_user_detail(user):
     while True:
         clear()
         print(green + f"User Details for {user['name']}:" + reset)
-        print(f"Name: {user['name']}")
-        print(f"Email: {user['email']}")
+        print(blue + f"Name: {user['name']}")
+        print(f"Email: {user['email']}{reset}")
 
         action = input_quit_handle(
             "(1) Modify Details\n"
             "(2) View/Modify Inventory\n"
-            "(3) Back to Users Menu\n"
+            "(3) Delete User\n"
+            "(4) Back to Users Menu\n"
             "Enter your choice: "
         ).strip()
 
         if action == "1":
-            modify_user_details(user)
+            modify_user_details_inner(user)
         elif action == "2":
             manage_user_inventory(user["_id"])
         elif action == "3":
+            clear()
+            delete_confirmation = (
+                input_quit_handle(
+                    red
+                    + f"Are you sure you want to delete user '{user['name']}'? (yes/no): "
+                    + reset
+                )
+                .strip()
+                .lower()
+            )
+            if delete_confirmation == "yes":
+                delete_user_and_inventory(user["_id"])
+                typing_effect(
+                    green
+                    + f"User '{user['name']}' and their inventory deleted successfully!"
+                    + reset
+                )
+                return
+            else:
+                print(blue + "Delete action cancelled." + reset)
+        elif action == "4":
             return
         else:
             print(red + "Invalid choice. Please try again." + reset)
-
-
-def modify_user_details(user):
-
-    clear()
-    print(green + f"Modify Details for {user['name']}:" + reset)
-    new_name = input_quit_handle(
-        f"Enter new name (leave blank to keep '{user['name']}'): "
-    ).strip()
-    new_email = input_quit_handle(
-        f"Enter new email (leave blank to keep '{user['email']}'): "
-    ).strip()
-
-    updated_user = {
-        "name": new_name if new_name else user["name"],
-        "email": new_email if new_email else user["email"],
-    }
-    update_db("users", {"_id": user["_id"]}, updated_user)
-    print(green + "User details updated successfully!" + reset)
 
 
 def manage_user_inventory(user_id):
@@ -139,3 +142,28 @@ def modify_inventory_item(item):
         print(green + "Inventory item updated successfully!" + reset)
     else:
         print(red + "Invalid input. Quantity must be a number." + reset)
+
+
+def modify_user_details_inner(user):
+    clear()
+    print(green + f"Modify Details for {user['name']}:" + reset)
+    new_name = input_quit_handle(
+        f"Enter new name (leave blank to keep '{user['name']}'): "
+    ).strip()
+    new_email = input_quit_handle(
+        f"Enter new email (leave blank to keep '{user['email']}'): "
+    ).strip()
+
+    updated_user = {
+        "name": new_name if new_name else user["name"],
+        "email": new_email if new_email else user["email"],
+    }
+
+    update_db("users", {"_id": user["_id"]}, updated_user)
+    print(green + "User details updated successfully!" + reset)
+
+
+def delete_user_and_inventory(user_id):
+    # Delete user everywhere in the DB
+    delete_db("users", {"_id": user_id})
+    delete_db("inventory", {"user_id": user_id})

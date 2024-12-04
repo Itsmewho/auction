@@ -6,33 +6,34 @@ Add on has more features are done.
 
 #
 
-- Make a user register.
-- Login for registerd users.
+- Make a user register. (done)
+- Login for registerd users.(done)
 - Login menu:
 
   - Go to auction.
   - See inventory.
   - Sell items.
   - Account details.
-  - Logout.
-  - Exit.
+  - Logout.(done)
+  - Exit.(done)
   - Delete account.
 
 - Admin:
 
-  - Only needs to input name for login.
+  - Only needs to input name for login. (done)
 
     - Admin menu:
-      - See users.
-        - Get user details.
-        - Change user data.
-        - Delete user.
+      - See users. (done)
+        - Get user details. (done)
+        - Change user data. (done)
+        - Change user inventory(,...)
+        - Delete user. (done)
       - See auction items.
         - Add items.
         - Change items.
         - Delete items.
-      - Logout.
-      - Exit.
+      - Logout.(done)
+      - Exit.(done)
 
 #
 
