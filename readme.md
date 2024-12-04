@@ -89,7 +89,7 @@ Maybe add to next projects boilerplate:
 - Register confirmation (10min window)
 - Add data change for user account[role=user]
 - Add reset password via mail/phone?
-- Look into 2 factor authenticatie.
+- Look into 2FA.
 - Look into last login from {"date": "UTC", "location": "location"}
 
 #
