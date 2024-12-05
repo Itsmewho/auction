@@ -27,7 +27,7 @@ Add on has more features are done.
         - Get user details. (done)
           - Change user data. (done)
           - Delete user. (done)
-          - Change user inventory.
+          - Change user inventory. (done)
       - See auction items.
         - Add items.
         - Change items.

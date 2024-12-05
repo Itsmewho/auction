@@ -93,6 +93,18 @@ def update_db(
         )
 
 
+def insert_db(collection_name: str, document: dict):
+    try:
+        collection: Collection = db[collection_name]
+        result = collection.insert_one(document)
+        if result.inserted_id:
+            logger.info(green + f"Document added to {collection_name}{reset}")
+        else:
+            logger.info(blue + f"Document insertion failed in {collection_name}{reset}")
+    except PyMongoError as e:
+        logger.error(red + f"Error inserting data into {collection_name}: {e}{reset}")
+
+
 def delete_db(collection_name: str, query: dict, multiple: bool = False):
 
     try:
