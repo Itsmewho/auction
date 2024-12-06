@@ -80,7 +80,7 @@ Do an additional 2 or 3 of these kind of projects,..
   Advanced:
 
   - Whatsapp clone.
-  - Chess game (AI- computer???)
+  - Chess game (AI???)
 
 #
 
