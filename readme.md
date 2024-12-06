@@ -84,7 +84,7 @@ Do an additional 2 or 3 of these kind of projects,..
 
 #
 
-Maybe add to next projects boilerplate:
+Add to next projects boilerplate:
 
 - Register confirmation (10min window)
 - Add data change for user account[role=user]
@@ -95,10 +95,17 @@ Maybe add to next projects boilerplate:
     - Give secoundairy password and email/sms confimation.
       - Lock location (yes/no)
 - Check login credentials and MAC-addres??. If no match: send accept message to,.
+
   - If already used combination: Skip.
   - Try to look into the possibilty for harddrive, motherboard serial combination???
+
 - Lock out Admin account if wrong input or MAC-addres(send email/sms to,.)
+
 - Lock out User account if wrong input \*3 (send email/sms)
+  - If user credentials and MAC-address do not match:
+    - Let login but show (\*) for every usefull data.
+    - Remove reset password.
+    - Remove email / phone data.
 
 #
 
