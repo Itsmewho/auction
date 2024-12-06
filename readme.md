@@ -93,7 +93,7 @@ Maybe add to next projects boilerplate:
 - Look into last login from {"date": "UTC", "location": location, "earth":{"long":"longditude, "lat":latitude"}}
 - Check login credentials and MAC-addres??. If no match: send accept message to,.
   - If already used combination: Skip.
-  - Try to look into the possibilty for hardrive, motherboard serial combination???
+  - Try to look into the possibilty for harddrive, motherboard serial combination???
 - Lock out Admin account if wrong input or MAC-addres(send email/sms to,.)
 - Lock out User account if wrong input \*3 (send email/sms)
 
