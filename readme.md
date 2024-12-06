@@ -90,8 +90,9 @@ Maybe add to next projects boilerplate:
 - Add data change for user account[role=user]
 - Add reset password via mail/phone?
 - Look into 2FA.
-- Look into last login from {"date": "UTC", "location": location, "earth":"longditude / latitude"}
+- Look into last login from {"date": "UTC", "location": location, "earth":{"long":"longditude, "lat":latitude"}}
 - Check login credentials and MAC-addres??. If no match: send accept message to,.
+  - If already used combination: Skip.
   - Try to look into the possibilty for hardrive, motherboard serial combination???
 - Lock out Admin account if wrong input or MAC-addres(send email/sms to,.)
 - Lock out User account if wrong input \*3 (send email/sms)
