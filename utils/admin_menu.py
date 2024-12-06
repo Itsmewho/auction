@@ -8,6 +8,7 @@ from utils.helpers import (
     typing_effect,
 )
 from db.db_operations import read_db, update_db, delete_db, insert_db
+import sha
 
 
 def menu_admin_login():

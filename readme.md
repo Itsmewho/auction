@@ -103,8 +103,13 @@ Maybe add to next projects boilerplate:
 #
 
 - Use different DB for ADMIN
+
+  - Use bycript / uuid / secrets / hashlib
+
 - Use different DB for Admin Login Combinations.
+  - Use bycript / uuid / secrets / hashlib
 - Use different DB for User Login combinations.
+  - Use bycript / uuid / secrets / hashlib
 
 #
 
