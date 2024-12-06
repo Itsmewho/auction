@@ -11,12 +11,12 @@ Add on has more features are done.
 - Login menu:
 
   - Go to auction.
-  - See inventory.
+  - See inventory. (Use block from admin_menu(done))
   - Sell items.
-  - Account details.
+  - Account details. (Use block from admin_menu(done))
   - Logout.(done)
   - Exit.(done)
-  - Delete account. (Use same block from admin_menu(done))
+  - Delete account. (Use block from admin_menu(done))
 
 - Admin:
 
@@ -28,10 +28,10 @@ Add on has more features are done.
           - Change user data. (done)
           - Delete user. (done)
           - Change user inventory. (done)
-      - See auction items.
+      - See auction items. (done)
         - Add items.
-        - Change items.
-        - Delete items.
+        - Change items. (done)
+        - Delete items. (done)
       - Logout.(done)
       - Exit.(done)
 
