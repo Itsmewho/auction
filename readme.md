@@ -7,15 +7,15 @@ Add on has more features are done.
 #
 
 - Make a user register. (done)
-- Login for registerd users.(done)
+- Login for registerd users. (done)
 - Login menu:
 
   - Go to auction.
   - See inventory. (Use block from admin_menu(done))
   - Sell items.
   - Account details. (Use block from admin_menu(done))
-  - Logout.(done)
-  - Exit.(done)
+  - Logout. (done)
+  - Exit. (done)
   - Delete account. (Use block from admin_menu(done))
 
 - Admin:
@@ -32,8 +32,8 @@ Add on has more features are done.
         - Add items.
         - Change items. (done)
         - Delete items. (done)
-      - Logout.(done)
-      - Exit.(done)
+      - Logout. (done)
+      - Exit. (done)
 
 #
 

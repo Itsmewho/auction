@@ -322,5 +322,5 @@ def manage_auction_inventory(item_id):
 
 
 def delete_auction_item(auction_id):
-    # Delete user everywhere in the DB
+    # Delete auction items only in the item-collection
     delete_db("auction_items", {"_id": auction_id})
