@@ -100,6 +100,10 @@ Maybe add to next projects boilerplate:
 - Lock out Admin account if wrong input or MAC-addres(send email/sms to,.)
 - Lock out User account if wrong input \*3 (send email/sms)
 
+- Use different DB for ADMIN
+- Use different DB for Admin Login Combinations.
+- Use different DB for User Login combinations.
+
 #
 
     If comfortable with CRUD-operations.
