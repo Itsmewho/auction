@@ -94,7 +94,7 @@ Maybe add to next projects boilerplate:
 - Check login credentials and MAC-addres??. If no match: send accept message to,.
   - Try to look into the possibilty for hardrive, motherboard serial combination???
 - Lock out Admin account if wrong input or MAC-addres(send email/sms to,.)
-- Lock out User account if wrong input\*3 (send email/sms)
+- Lock out User account if wrong input \*3 (send email/sms)
 
 #
 
