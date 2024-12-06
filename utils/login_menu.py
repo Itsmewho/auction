@@ -4,7 +4,7 @@ from utils.helpers import green, reset, input_quit_handle, clear, handle_quit
 
 # Testing for now :
 def menu_user_login(logged_user):
-
+    # Use code block from admin_menu as they will be almost the same:
     while True:
         action = input_quit_handle(
             green + f"What do you want to do? \n"

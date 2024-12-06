@@ -13,6 +13,9 @@ client = MongoClient(MONGO_URI)
 db = client[MONGO_DBNAME]
 print("Connected to:", db.name)
 
+
+# Might delete this later:
+
 # Collections.
 MONGO_ADMIN = os.getenv("MONGO_ADMIN", "admin")
 MONGO_USERS = os.getenv("MONGO_USERS", "users")

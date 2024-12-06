@@ -26,8 +26,7 @@ def menu_admin_login():
             manage_users()
         elif action == "2":
             clear()
-            # Need to work on this option!
-            # Comes when game is work due to in game updates and delete_db
+            manage_auction()
         elif action == "3":
             typing_effect(green + f"Logging out,.{reset}")
             clear()
@@ -66,7 +65,7 @@ def manage_user_detail(user):
 
     while True:
         clear()
-        print(green + f"User Details for {user['name']}:" + reset)
+        print(green + f"User Details for {user['name']}:{reset}")
         print(blue + f"Name: {user['name']}")
         print(f"Email: {user['email']}{reset}")
 
@@ -107,6 +106,26 @@ def manage_user_detail(user):
             return
         else:
             print(red + "Invalid choice. Please try again." + reset)
+
+
+def modify_user_details_inner(user):
+
+    clear()
+    print(green + f"Modify Details for {user['name']}:" + reset)
+    new_name = input_quit_handle(
+        f"Enter new name (leave blank to keep '{user['name']}'): "
+    ).strip()
+    new_email = input_quit_handle(
+        f"Enter new email (leave blank to keep '{user['email']}'): "
+    ).strip()
+
+    updated_user = {
+        "name": new_name if new_name else user["name"],
+        "email": new_email if new_email else user["email"],
+    }
+
+    update_db("users", {"_id": user["_id"]}, updated_user)
+    print(green + "User details updated successfully!" + reset)
 
 
 def manage_user_inventory(user_id):
@@ -203,27 +222,105 @@ def modify_inventory_item(item):
         print(red + "Invalid choice. Please try again." + reset)
 
 
-def modify_user_details_inner(user):
-
-    clear()
-    print(green + f"Modify Details for {user['name']}:" + reset)
-    new_name = input_quit_handle(
-        f"Enter new name (leave blank to keep '{user['name']}'): "
-    ).strip()
-    new_email = input_quit_handle(
-        f"Enter new email (leave blank to keep '{user['email']}'): "
-    ).strip()
-
-    updated_user = {
-        "name": new_name if new_name else user["name"],
-        "email": new_email if new_email else user["email"],
-    }
-
-    update_db("users", {"_id": user["_id"]}, updated_user)
-    print(green + "User details updated successfully!" + reset)
-
-
 def delete_user_and_inventory(user_id):
     # Delete user everywhere in the DB
     delete_db("users", {"_id": user_id})
     delete_db("inventory", {"user_id": user_id})
+
+
+def manage_auction():
+
+    while True:
+        auction_items = read_db("auction_items")
+        if not auction_items:
+            print(blue + f"No items found! {reset}")
+            return
+
+        print(green + f"{reset}")
+        for idx, item in enumerate(auction_items, start=1):
+            print(f"({idx}) {item["item"]} = {item["price"]}")
+
+        print(f"({len(auction_items) + 1} Back to Main Menu")
+
+        choice = input_quit_handle("Select a item or go back").strip()
+        if choice.isdigit() and 1 <= int(choice) <= len(auction_items):
+            manage_auction_detail(auction_items[int(choice) - 1])
+        elif choice == str(len(auction_items) + 1):
+            return
+        else:
+            print(red + f"Invalid choice. Please try again. {reset}")
+
+
+def manage_auction_detail(auction_item):
+
+    while True:
+        clear()
+        print(green + f"Auction item: {auction_item["item"]}: {reset}")
+        print(blue + f"Price: {auction_item["price"]}")
+
+        action = input_quit_handle(
+            "(1) Modify Detail\n"
+            "(2) Add Items\n"
+            "(2) Delete Items\n"
+            "(4) Go back\n"
+            "Enter your choice\n"
+        ).strip()
+        if action == "1":
+            modify_aution_details_inner(auction_item)
+        elif action == "2":
+            manage_auction_inventory(auction_item["_id"])
+        elif action == "3":
+            clear()
+            delete_confirmation = (
+                input_quit_handle(
+                    red
+                    + f"Are you sure you want to delete item '{auction_item['name']}'? (yes/no): "
+                    + reset
+                )
+                .strip()
+                .lower()
+            )
+            if delete_confirmation == "yes":
+                delete_auction_item(auction_item["_id"])
+                typing_effect(
+                    green
+                    + f"Auction item: '{auction_item['name']}' deleted successfully!"
+                    + reset
+                )
+                return
+            else:
+                print(blue + "Delete action cancelled." + reset)
+        elif action == "4":
+            return
+        else:
+            print(red + "Invalid choice. Please try again." + reset)
+
+
+def modify_aution_details_inner(auction_item):
+
+    clear()
+    print(green + f"Modify details for {auction_item["item"]}{reset}")
+    new_name = input_quit_handle(
+        f"Enter new name (leave blank to keep '{auction_item['name']}'): "
+    ).strip()
+    new_price = input_quit_handle(
+        f"Enter new price (leave blank to keep '{auction_item['price']}'): "
+    ).strip()
+
+    updated_item = {
+        "name": new_name if new_name else auction_item["name"],
+        "price": new_price if new_price else auction_item["price"],
+    }
+    # Add check input is str or int
+    update_db("autcion_items", {"_id": auction_item["_id"]}, updated_item)
+    print(green + "Details updated successfully!" + reset)
+
+
+def manage_auction_inventory(item_id):
+    # Add of go back.
+    print()
+
+
+def delete_auction_item(auction_id):
+    # Delete user everywhere in the DB
+    delete_db("auction_items", {"_id": auction_id})
