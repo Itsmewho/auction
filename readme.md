@@ -92,7 +92,8 @@ Maybe add to next projects boilerplate:
 - Look into 2FA.
 - Look into last login from {"date": "UTC", "location": location, "earth":{"long":"longditude, "lat":latitude"}}
   - If not recognized.
-    - Lock location (yes/no)
+    - Give secoundairy password and email/sms confimation.
+      - Lock location (yes/no)
 - Check login credentials and MAC-addres??. If no match: send accept message to,.
   - If already used combination: Skip.
   - Try to look into the possibilty for harddrive, motherboard serial combination???
