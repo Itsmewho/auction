@@ -103,7 +103,7 @@ Add to next projects boilerplate:
 
 - Lock out User account if wrong input \*3 (send email/sms)
   - If user credentials and MAC-address do not match:
-    - Let login but show (\*) for every usefull data.
+    - Proseed login but show (\*) for every usefull data.
     - Remove reset password.
     - Remove email / phone data.
 
