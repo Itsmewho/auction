@@ -11,7 +11,6 @@ from utils.helpers import (
 
 def menu_user_login(logged_user):
     while True:
-        # Menu options with added functionality
         action = input_quit_handle(
             green + f"What do you want to do? \n"
             "(1) Go to auction\n"
