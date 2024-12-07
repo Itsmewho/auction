@@ -178,38 +178,42 @@ def modify_inventory_item(item):
     ).strip()
 
     if action == "1":
-        new_price = input_quit_handle(
-            f"Enter new starting price (current: {item['sellprice']}): "
-        ).strip()
-        if new_price.isdigit():
-            update_db(
-                "inventory", {"_id": item["_id"]}, {"sellprice": float(new_price)}
-            )
-            print(green + "Starting price updated successfully!" + reset)
-        else:
-            print(red + "Invalid input. Price must be a number." + reset)
-
+        sell_price(item)
     if action == "2":
-        delete_confirmation = (
-            input_quit_handle(
-                red
-                + f"Are you sure you want to delete '{item['item']}'? (yes/no): "
-                + reset
-            )
-            .strip()
-            .lower()
-        )
-        if delete_confirmation == "yes":
-            delete_db("inventory", {"_id": item["_id"]})
-            print(green + f"Item '{item['item']}' deleted successfully!" + reset)
+        delete_item(item)
     elif action == "3":
         return
     else:
         print(red + "Invalid choice. Please try again." + reset)
 
 
+def sell_price(item):
+    new_price = input_quit_handle(
+        f"Enter new starting price (current: {item['sellprice']}): "
+    ).strip()
+    if new_price.isdigit():
+        update_db("inventory", {"_id": item["_id"]}, {"sellprice": float(new_price)})
+        print(green + "Starting price updated successfully!" + reset)
+    else:
+        print(red + "Invalid input. Price must be a number." + reset)
+
+
+def delete_item(item):
+    delete_confirmation = (
+        input_quit_handle(
+            red
+            + f"Are you sure you want to delete '{item['item']}'? (yes/no): "
+            + reset
+        )
+        .strip()
+        .lower()
+    )
+    if delete_confirmation == "yes":
+        delete_db("inventory", {"_id": item["_id"]})
+        print(green + f"Item '{item['item']}' deleted successfully!" + reset)
+
+
 def delete_user_and_inventory(user_id):
-    # Delete user everywhere in the DB
     delete_db("users", {"_id": user_id})
     delete_db("inventory", {"user_id": user_id})
 
@@ -244,16 +248,13 @@ def manage_auction():
         if not auction_items:
             print(blue + "No items found! Add some to get started." + reset)
 
-        # Display auction items
         print(green + "Auction Items:" + reset)
         for idx, item in enumerate(auction_items, start=1):
             print(f"({idx}) {item['item']} - ${item['price']}")
 
-        # Add menu options
         print(f"({len(auction_items) + 1}) Add Item")
         print(f"({len(auction_items) + 2}) Back to Main Menu")
 
-        # Input handling
         choice = input_quit_handle(
             "Select an item to manage or add a new one: "
         ).strip()
@@ -318,27 +319,27 @@ def manage_auction_detail(auction_item):
         if action == "1":
             modify_auction_details_inner(auction_item)
         elif action == "2":
-            delete_confirmation = (
-                input_quit_handle(
-                    red
-                    + f"Are you sure you want to delete '{auction_item['item']}'? (yes/no): "
-                    + reset
-                )
-                .strip()
-                .lower()
-            )
-            if delete_confirmation == "yes":
-                delete_auction_item(auction_item["_id"])
-                print(
-                    green
-                    + f"Item '{auction_item['item']}' deleted successfully!"
-                    + reset
-                )
-                return
+            delete_auction_item(auction_item)
         elif action == "3":
             return
         else:
             print(red + "Invalid choice. Please try again." + reset)
+
+
+def delete_auction_item(auction_item):
+    delete_confirmation = (
+        input_quit_handle(
+            red
+            + f"Are you sure you want to delete '{auction_item['item']}'? (yes/no): "
+            + reset
+        )
+        .strip()
+        .lower()
+    )
+    if delete_confirmation == "yes":
+        delete_auction_item(auction_item["_id"])
+        print(green + f"Item '{auction_item['item']}' deleted successfully!" + reset)
+        return
 
 
 def validate_price(price_input):
@@ -390,5 +391,4 @@ def add_auction_inventory():
 
 
 def delete_auction_item(auction_id):
-    # Delete auction items only in the item-collection
     delete_db("auction_items", {"_id": auction_id})

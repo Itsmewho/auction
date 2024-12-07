@@ -1,7 +1,10 @@
 # Log in menu
 from utils.auction import auction
+from utils.admin_menu import delete_user_and_inventory
 from utils.helpers import (
     green,
+    red,
+    blue,
     reset,
     input_quit_handle,
     clear,
@@ -11,6 +14,7 @@ from utils.helpers import (
 
 
 def menu_user_login(logged_user):
+
     while True:
         action = input_quit_handle(
             green + f"What do you want to do? \n"
@@ -64,4 +68,23 @@ def view_account_details(logged_user):
 
 
 def delete_account(logged_user):
-    print(f"Deleting account for {logged_user['name']}...")
+    clear()
+    delete_confirmation = (
+        input_quit_handle(
+            red
+            + f"Are you sure you want to delete user '{logged_user['name']}'? (yes/no): "
+            + reset
+        )
+        .strip()
+        .lower()
+    )
+    if delete_confirmation == "yes":
+        delete_user_and_inventory(logged_user["_id"])
+        typing_effect(
+            green
+            + f"User '{logged_user['name']}' and their inventory deleted successfully!"
+            + reset
+        )
+        return
+    else:
+        print(blue + "Delete action cancelled." + reset)
