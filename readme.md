@@ -48,8 +48,8 @@ Add on has more features are done.
   - Items have a starting price(random % of asking price.)
   - Items have a asking price(hidden).
   - AI bidding. (random bid of % of last bid.)
-  - User gets starting money.
-  - User can sell items and set asking price.
+  - User gets starting money. (done)
+  - User can sell items and set asking price. (done)
 
 #
 
