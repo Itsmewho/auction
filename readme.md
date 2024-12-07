@@ -71,19 +71,6 @@ LEARNING POITNS :
 
 Do an additional 2 or 3 of these kind of projects,..
 
-- Choose from:
-
-  Intermediate:
-
-  - Blackjack.
-  - Pong.
-  - Pacman.
-
-  Advanced:
-
-  - Whatsapp clone.
-  - Chess game (AI???)
-
 #
 
 Add to next projects boilerplate:
