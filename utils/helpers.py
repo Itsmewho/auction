@@ -30,7 +30,7 @@ def input_quit_handle(prompt, reset=Style.RESET_ALL):
     # Type in 'normal', color.
     user_input = input().strip().lower()
 
-    if user_input in {"n", "q", "quit"}:
+    if user_input in {"q", "quit"}:
         handle_quit()
     return user_input
 

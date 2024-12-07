@@ -39,15 +39,17 @@ Add on has more features are done.
 
 - Main game:
 
-  - Lets user bid on items in the auction.
-  - User can choose out of 3 items.
-  - Only highest bid shows.
-  - Auction time = 1, 2 or 3min?
-  - Bid more or leave (return login_menu.)
-  - Check if user has enough funds.
-  - Items have a starting price(random % of asking price.)
-  - Items have a asking price(hidden).
-  - AI bidding. (random bid of % of last bid.)
+  - Lets user bid on items in the auction. (done)
+  - User can choose out of 3 items. (done)
+  - Only highest bid shows. (done)
+  - Auction time = 1, 2 or 3min? (done)
+  - Bid more or leave (done)
+  - Check if user has enough money. (done)
+  - Items have a starting price. (done)
+  - Computer bidding. (done)
+  - If computer cannot bid anymore user wins! (done)
+  - Auction items gets removed from auction_items(only if user wins(done))
+  - Auction items added to inventory(user_id(done))
   - User gets starting money. (done)
   - User can sell items and set asking price. (done)
 
