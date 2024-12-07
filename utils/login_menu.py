@@ -51,10 +51,6 @@ def menu_user_login(logged_user):
             print("Invalid choice, please select again.")
 
 
-def go_to_auction(logged_user):
-    print("Redirecting to auction...")
-
-
 def see_inventory(logged_user):
     print(f"Viewing inventory for {logged_user['name']}...")
 
