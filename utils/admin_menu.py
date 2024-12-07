@@ -14,6 +14,7 @@ from db.db_operations import read_db, update_db, delete_db, insert_db
 def menu_admin_login():
     # Testing
     while True:
+        clear()
         action = input_quit_handle(
             green + f"What do you want to do? \n"
             "(1) Manage Users\n"
