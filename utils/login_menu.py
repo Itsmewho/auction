@@ -1,4 +1,5 @@
 # Log in menu
+from utils.auction import auction
 from utils.helpers import (
     green,
     reset,
@@ -25,7 +26,7 @@ def menu_user_login(logged_user):
 
         if action == "1":
             clear()
-            go_to_auction(logged_user)
+            auction(logged_user)
         elif action == "2":
             clear()
             see_inventory(logged_user)
@@ -45,7 +46,7 @@ def menu_user_login(logged_user):
         elif action == "7":
             clear()
             delete_account(logged_user)
-            return
+            handle_quit()
         else:
             print("Invalid choice, please select again.")
 
@@ -64,15 +65,6 @@ def sell_items(logged_user):
 
 def view_account_details(logged_user):
     print(f"Viewing account details for {logged_user['name']}...")
-
-
-def logout_user(logged_user):
-    print(f"Logging out {logged_user['name']}...")
-
-
-def exit_system():
-    print("Exiting system...")
-    exit()
 
 
 def delete_account(logged_user):
