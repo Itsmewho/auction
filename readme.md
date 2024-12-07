@@ -121,6 +121,7 @@ Add to next projects boilerplate:
 #
 
     If comfortable with CRUD-operations.
-    Start working with more with API's and data collection.
+    Start working more with API's and data collection.
+    - Financial data!
 
 #
