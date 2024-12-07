@@ -1,0 +1,5 @@
+colorama==0.4.6
+pydantic==2.10.3
+pymongo==4.10.1
+python-dotenv==1.0.1
+python_bcrypt==0.3.2
