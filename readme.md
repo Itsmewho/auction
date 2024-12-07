@@ -29,7 +29,7 @@ Add on has more features are done.
           - Delete user. (done)
           - Change user inventory. (done)
       - See auction items. (done)
-        - Add items.
+        - Add items. (done)
         - Change items. (done)
         - Delete items. (done)
       - Logout. (done)
@@ -122,11 +122,5 @@ Add to next projects boilerplate:
 
     If comfortable with CRUD-operations.
     Start working with more with API's and data collection.
-
-#
-
-- Don't resort to learning: GUI's
-  - GUI's are not part off the 'goal', as it seems for now!
-  - Keep the terminal interface.
 
 #

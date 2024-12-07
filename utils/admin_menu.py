@@ -8,7 +8,6 @@ from utils.helpers import (
     typing_effect,
 )
 from db.db_operations import read_db, update_db, delete_db, insert_db
-import sha
 
 
 def menu_admin_login():
@@ -230,52 +229,90 @@ def delete_user_and_inventory(user_id):
 
 
 def manage_auction():
-
     while True:
+        clear()
         auction_items = read_db("auction_items")
         if not auction_items:
-            print(blue + f"No items found! {reset}")
-            return
+            print(blue + "No items found! Add some to get started." + reset)
 
-        print(green + f"{reset}")
+        # Display auction items
+        print(green + "Auction Items:" + reset)
         for idx, item in enumerate(auction_items, start=1):
-            print(f"({idx}) {item["item"]} = {item["price"]}")
+            print(f"({idx}) {item['item']} - ${item['price']}")
 
-        print(f"({len(auction_items) + 1} Back to Main Menu")
+        # Add menu options
+        print(f"({len(auction_items) + 1}) Add Item")
+        print(f"({len(auction_items) + 2}) Back to Main Menu")
 
-        choice = input_quit_handle("Select a item or go back").strip()
-        if choice.isdigit() and 1 <= int(choice) <= len(auction_items):
-            manage_auction_detail(auction_items[int(choice) - 1])
-        elif choice == str(len(auction_items) + 1):
-            return
+        # Input handling
+        choice = input_quit_handle(
+            "Select an item to manage or add a new one: "
+        ).strip()
+        if choice.isdigit():
+            choice = int(choice)
+            if 1 <= choice <= len(auction_items):
+                manage_auction_detail(auction_items[choice - 1])
+            elif choice == len(auction_items) + 1:
+                add_auction_inventory()
+            elif choice == len(auction_items) + 2:
+                return
+            else:
+                print(red + "Invalid choice. Please try again." + reset)
         else:
-            print(red + f"Invalid choice. Please try again. {reset}")
+            print(red + "Invalid input. Please try again." + reset)
+
+
+def manage_auction():
+    while True:
+        clear()
+        auction_items = read_db("auction_items")
+        if not auction_items:
+            print(blue + "No items found! Add some to get started." + reset)
+
+        print(green + "Auction Items:" + reset)
+        for idx, item in enumerate(auction_items, start=1):
+            print(f"({idx}) {item['item']} - ${item['price']}")
+
+        print(f"({len(auction_items) + 1}) Add Item")
+        print(f"({len(auction_items) + 2}) Back to Main Menu")
+
+        choice = input_quit_handle(
+            "Select an item to manage or add a new one: "
+        ).strip()
+        if choice.isdigit():
+            choice = int(choice)
+            if 1 <= choice <= len(auction_items):
+                manage_auction_detail(auction_items[choice - 1])
+            elif choice == len(auction_items) + 1:
+                add_auction_inventory()
+            elif choice == len(auction_items) + 2:
+                return
+            else:
+                print(red + "Invalid choice. Please try again." + reset)
+        else:
+            print(red + "Invalid input. Please try again." + reset)
 
 
 def manage_auction_detail(auction_item):
-
     while True:
         clear()
-        print(green + f"Auction item: {auction_item["item"]}: {reset}")
-        print(blue + f"Price: {auction_item["price"]}")
+        print(green + f"Auction item: {auction_item['item']}:" + reset)
+        print(blue + f"Price: {auction_item['price']}" + reset)
 
         action = input_quit_handle(
-            "(1) Modify Detail\n"
-            "(2) Add Items\n"
-            "(2) Delete Items\n"
-            "(4) Go back\n"
-            "Enter your choice\n"
+            "(1) Modify Details\n"
+            "(2) Delete Item\n"
+            "(3) Go Back\n"
+            "Enter your choice: "
         ).strip()
+
         if action == "1":
-            modify_aution_details_inner(auction_item)
+            modify_auction_details_inner(auction_item)
         elif action == "2":
-            manage_auction_inventory(auction_item["_id"])
-        elif action == "3":
-            clear()
             delete_confirmation = (
                 input_quit_handle(
                     red
-                    + f"Are you sure you want to delete item '{auction_item['name']}'? (yes/no): "
+                    + f"Are you sure you want to delete '{auction_item['item']}'? (yes/no): "
                     + reset
                 )
                 .strip()
@@ -283,43 +320,64 @@ def manage_auction_detail(auction_item):
             )
             if delete_confirmation == "yes":
                 delete_auction_item(auction_item["_id"])
-                typing_effect(
+                print(
                     green
-                    + f"Auction item: '{auction_item['name']}' deleted successfully!"
+                    + f"Item '{auction_item['item']}' deleted successfully!"
                     + reset
                 )
                 return
-            else:
-                print(blue + "Delete action cancelled." + reset)
-        elif action == "4":
+        elif action == "3":
             return
         else:
             print(red + "Invalid choice. Please try again." + reset)
 
 
-def modify_aution_details_inner(auction_item):
+def validate_price(price_input):
+    try:
+        price = float(price_input)
+        if price < 0:
+            print(red + "Price must be a positive number." + reset)
+            return None
+        return price
+    except ValueError:
+        print(red + "Invalid price. Please enter a valid number." + reset)
+        return None
 
+
+def modify_auction_details_inner(auction_item):
     clear()
-    print(green + f"Modify details for {auction_item["item"]}{reset}")
-    new_name = input_quit_handle(
-        f"Enter new name (leave blank to keep '{auction_item['name']}'): "
+    print(green + f"Modify details for {auction_item['item']}:" + reset)
+    new_item_name = input_quit_handle(
+        f"Enter new item name (leave blank to keep '{auction_item['item']}'): "
     ).strip()
     new_price = input_quit_handle(
         f"Enter new price (leave blank to keep '{auction_item['price']}'): "
     ).strip()
 
     updated_item = {
-        "name": new_name if new_name else auction_item["name"],
-        "price": new_price if new_price else auction_item["price"],
+        "item": new_item_name if new_item_name else auction_item["item"],
+        "price": float(new_price) if new_price.isdigit() else auction_item["price"],
     }
-    # Add check input is str or int
-    update_db("autcion_items", {"_id": auction_item["_id"]}, updated_item)
-    print(green + "Details updated successfully!" + reset)
+
+    update_db("auction_items", {"_id": auction_item["_id"]}, updated_item)
+    print(green + "Auction item details updated successfully!" + reset)
 
 
-def manage_auction_inventory(item_id):
-    # Add of go back.
-    print()
+def add_auction_inventory():
+    clear()
+    print(green + "Add New Auction Item:" + reset)
+
+    item = input_quit_handle("Enter item name: ").strip()
+    price = input_quit_handle("Enter price: ").strip()
+
+    if not price.isdigit():
+        print(red + "Invalid input. Please provide a valid numeric price." + reset)
+        return
+
+    new_item = {"item": item, "price": float(price)}
+
+    insert_db("auction_items", new_item)
+    print(green + f"Item '{item}' added successfully!" + reset)
 
 
 def delete_auction_item(auction_id):
