@@ -11,16 +11,16 @@ Add on has more features are done.
 - Login menu:
 
   - Go to auction.
-  - See inventory.
-  - Sell items.
-  - Account details.
+  - See inventory. (done)
+  - Sell items. (done)
+  - Account details. (done)
   - Logout. (done)
   - Exit. (done)
-  - Delete account.
+  - Delete account. (done)
 
 - Admin:
 
-  - Only needs to input name for login. (done)
+  - Only needs to input name for login. (Im lazy(done))
 
     - Admin menu:
       - See users. (done)
