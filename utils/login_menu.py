@@ -163,7 +163,7 @@ def delete_account(logged_user):
     delete_confirmation = (
         input_quit_handle(
             red
-            + f"Are you sure you want to delete user '{logged_user['name']}'? (yes/no): "
+            + f"Are you sure you want to delete Account '{logged_user['name']}'? (yes/no): "
             + reset
         )
         .strip()
