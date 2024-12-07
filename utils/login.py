@@ -46,9 +46,7 @@ def login():
 
         name = input_quit_handle("Enter your name : ").title()
 
-        # Kind of useless but it gets the main idea:
         admin_check = read_db("admin", {"name": name})
-        print(f"Debug: Admin check result: {admin_check}")
 
         if admin_check and len(admin_check) > 0:
             admin = admin_check[0]

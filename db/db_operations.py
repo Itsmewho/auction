@@ -1,7 +1,6 @@
 # CRUD operations for universial use.
 # Improved by GPT. Will use in the future, if proven usefull.
 
-
 import logging
 from pymongo.errors import PyMongoError
 from pymongo.collection import Collection

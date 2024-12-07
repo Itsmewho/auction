@@ -1,5 +1,4 @@
 # Register users
-import os, re
 import bcrypt
 from db.db_operations import read_db, create_db
 from models.all_models import RegisterModel
@@ -121,8 +120,10 @@ def main_register():
         hashed_password = encrypt_password(user_data.secure_password)
         user_data_dict = user_data.model_dump()
         user_data_dict["secure_password"] = hashed_password.decode("utf-8")
+        user_data_dict["money"] = 5000
 
         create_db("users", user_data_dict)
+        clear()
         typing_effect(green + f"User '{name}' registered successfully! 👌 {reset}")
     except ValidationError as e:
         typing_effect(red + f"Error: {e}{reset}")
