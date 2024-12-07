@@ -11,12 +11,12 @@ Add on has more features are done.
 - Login menu:
 
   - Go to auction.
-  - See inventory. (Use block from admin_menu(done))
+  - See inventory.
   - Sell items.
-  - Account details. (Use block from admin_menu(done))
+  - Account details.
   - Logout. (done)
   - Exit. (done)
-  - Delete account. (Use block from admin_menu(done))
+  - Delete account.
 
 - Admin:
 

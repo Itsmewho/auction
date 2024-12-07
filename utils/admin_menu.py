@@ -6,6 +6,7 @@ from utils.helpers import (
     input_quit_handle,
     clear,
     typing_effect,
+    handle_quit,
 )
 from db.db_operations import read_db, update_db, delete_db, insert_db
 
@@ -17,7 +18,8 @@ def menu_admin_login():
             green + f"What do you want to do? \n"
             "(1) Manage Users\n"
             "(2) Auction Items\n"
-            "(4) logout\n"
+            "(3) logout\n"
+            "(4) exit\n"
             "Enter your choice admin: "
         ).strip()
 
@@ -31,6 +33,9 @@ def menu_admin_login():
             typing_effect(green + f"Logging out,.{reset}")
             clear()
             return
+        elif action == "4":
+            handle_quit()
+            break
         else:
             typing_effect(red + f"Invalid choice. Please try again,.")
             clear()
@@ -82,26 +87,7 @@ def manage_user_detail(user):
         elif action == "2":
             manage_user_inventory(user["_id"])
         elif action == "3":
-            clear()
-            delete_confirmation = (
-                input_quit_handle(
-                    red
-                    + f"Are you sure you want to delete user '{user['name']}'? (yes/no): "
-                    + reset
-                )
-                .strip()
-                .lower()
-            )
-            if delete_confirmation == "yes":
-                delete_user_and_inventory(user["_id"])
-                typing_effect(
-                    green
-                    + f"User '{user['name']}' and their inventory deleted successfully!"
-                    + reset
-                )
-                return
-            else:
-                print(blue + "Delete action cancelled." + reset)
+            delete_user(user)
         elif action == "4":
             return
         else:
@@ -226,6 +212,29 @@ def delete_user_and_inventory(user_id):
     # Delete user everywhere in the DB
     delete_db("users", {"_id": user_id})
     delete_db("inventory", {"user_id": user_id})
+
+
+def delete_user(user):
+    clear()
+    delete_confirmation = (
+        input_quit_handle(
+            red
+            + f"Are you sure you want to delete user '{user['name']}'? (yes/no): "
+            + reset
+        )
+        .strip()
+        .lower()
+    )
+    if delete_confirmation == "yes":
+        delete_user_and_inventory(user["_id"])
+        typing_effect(
+            green
+            + f"User '{user['name']}' and their inventory deleted successfully!"
+            + reset
+        )
+        return
+    else:
+        print(blue + "Delete action cancelled." + reset)
 
 
 def manage_auction():
